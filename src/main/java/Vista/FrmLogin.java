@@ -3,6 +3,7 @@ package Vista;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 
 
@@ -45,11 +46,16 @@ public class FrmLogin extends javax.swing.JFrame {
         cbxRol = new javax.swing.JComboBox<>();
         btnIngresar = new javax.swing.JButton();
         lblRol = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(367, 500));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(367, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Base.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,32 +64,40 @@ public class FrmLogin extends javax.swing.JFrame {
         Panel_Datos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAvatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/avatar.gif"))); // NOI18N
-        Panel_Datos.add(lblAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 18, 90, 90));
+        Panel_Datos.add(lblAvatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 90, 90));
 
         lblUsuario.setText("Usuario:");
-        Panel_Datos.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        Panel_Datos.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         lblContraseña.setText("Contraseña:");
-        Panel_Datos.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        Panel_Datos.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
-        Panel_Datos.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 130, -1));
+        Panel_Datos.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 130, -1));
 
         txtContraseña.addActionListener(this::txtContraseñaActionPerformed);
-        Panel_Datos.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 130, -1));
+        Panel_Datos.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 130, -1));
 
         cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administradora", "Almacén", "Coordinadora" }));
         cbxRol.addActionListener(this::cbxRolActionPerformed);
-        Panel_Datos.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 130, -1));
+        Panel_Datos.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 130, -1));
 
         btnIngresar.setText("Iniciar Sesión");
         btnIngresar.addActionListener(this::btnIngresarActionPerformed);
-        Panel_Datos.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
+        Panel_Datos.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         lblRol.setText("Rol:");
-        Panel_Datos.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 30, -1));
+        Panel_Datos.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 30, -1));
 
         Base.add(Panel_Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 240, 340));
+
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/X1.gif")));
+        btnSalir.addActionListener(this::btnSalirActionPerformed);
+        btnSalir.setOpaque(false);
+        btnSalir.setContentAreaFilled(false);
+        btnSalir.setBorderPainted(false);
+        btnSalir.setFocusPainted(false);
+        Base.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 35, 35));
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/logo_adavaminsa.png"))); // NOI18N
         Base.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
@@ -98,11 +112,11 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
+        btnIngresarActionPerformed(evt);
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
+        txtContraseña.requestFocus();
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void cbxRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRolActionPerformed
@@ -110,8 +124,32 @@ public class FrmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxRolActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
+        String usuario = txtUsuario.getText().trim();
+        String contrasena = new String(txtContraseña.getPassword());
+        String rolSelected = cbxRol.getSelectedItem().toString();
+
+        if (usuario.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (usuario.equals("admin") && contrasena.equals("1234")) {
+            JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema ADAVAMINSA!\nRol: " + rolSelected, "Acceso Concedido", JOptionPane.INFORMATION_MESSAGE);
+
+            this.dispose(); // Cierra la ventana del login
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
+            txtContraseña.setText("");
+            txtUsuario.requestFocus();
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea salir de ADAVAMINSA?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,6 +182,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel Panel_Datos;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cbxRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAvatar;
