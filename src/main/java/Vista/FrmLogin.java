@@ -71,19 +71,13 @@ public class FrmLogin extends javax.swing.JFrame {
 
         lblContraseña.setText("Contraseña:");
         Panel_Datos.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
         Panel_Datos.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 130, -1));
-
-        txtContraseña.addActionListener(this::txtContraseñaActionPerformed);
         Panel_Datos.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 130, -1));
 
         cbxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administradora", "Almacén", "Coordinadora" }));
-        cbxRol.addActionListener(this::cbxRolActionPerformed);
         Panel_Datos.add(cbxRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 130, -1));
 
         btnIngresar.setText("Iniciar Sesión");
-        btnIngresar.addActionListener(this::btnIngresarActionPerformed);
         Panel_Datos.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, -1, -1));
 
         lblRol.setText("Rol:");
@@ -92,7 +86,6 @@ public class FrmLogin extends javax.swing.JFrame {
         Base.add(Panel_Datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 240, 340));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/X1.gif")));
-        btnSalir.addActionListener(this::btnSalirActionPerformed);
         btnSalir.setOpaque(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setBorderPainted(false);
@@ -110,46 +103,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        btnIngresarActionPerformed(evt);
-    }//GEN-LAST:event_txtContraseñaActionPerformed
-
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        txtContraseña.requestFocus();
-    }//GEN-LAST:event_txtUsuarioActionPerformed
-
-    private void cbxRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxRolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxRolActionPerformed
-
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String usuario = txtUsuario.getText().trim();
-        String contrasena = new String(txtContraseña.getPassword());
-        String rolSelected = cbxRol.getSelectedItem().toString();
-
-        if (usuario.isEmpty() || contrasena.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (usuario.equals("admin") && contrasena.equals("1234")) {
-            JOptionPane.showMessageDialog(this, "¡Bienvenido al sistema ADAVAMINSA!\nRol: " + rolSelected, "Acceso Concedido", JOptionPane.INFORMATION_MESSAGE);
-
-            this.dispose(); // Cierra la ventana del login
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-            txtContraseña.setText("");
-            txtUsuario.requestFocus();
-        }
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        int opcion = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea salir de ADAVAMINSA?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (opcion == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,15 +134,15 @@ public class FrmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Logo;
     private javax.swing.JPanel Panel_Datos;
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cbxRol;
+    public javax.swing.JButton btnIngresar;
+    public javax.swing.JButton btnSalir;
+    public javax.swing.JComboBox<String> cbxRol;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAvatar;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JPasswordField txtContraseña;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JPasswordField txtContraseña;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
