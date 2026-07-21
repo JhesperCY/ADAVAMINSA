@@ -34,6 +34,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblLogoAdavaminsa = new javax.swing.JLabel();
         lblRo = new javax.swing.JLabel();
         lblRol = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
+        lblHo = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
+        lblfe = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -41,12 +45,17 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -83,17 +92,29 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblUsu.setText("Usuario:");
-        jPanel1.add(lblUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
+        jPanel1.add(lblUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         lblUsuario.setText("................");
-        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        jPanel1.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
         jPanel1.add(lblLogoAdavaminsa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 40));
 
         lblRo.setText("Rol:");
-        jPanel1.add(lblRo, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, -1));
+        jPanel1.add(lblRo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         lblRol.setText("................");
-        jPanel1.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, -1, -1));
+        jPanel1.add(lblRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+
+        lblHora.setText("................");
+        jPanel1.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, -1));
+
+        lblHo.setText("Hora:");
+        jPanel1.add(lblHo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, -1, -1));
+
+        lblFecha.setText("................");
+        jPanel1.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, -1));
+
+        lblfe.setText("Fecha");
+        jPanel1.add(lblfe, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 40));
 
@@ -102,25 +123,22 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jButton1.setText("Inicio");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 48));
 
-        jButton2.setText("Medicamentos");
+        jButton2.setText("Inventario");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 48));
 
-        jButton3.setText("Lotes");
+        jButton3.setText("Donaciones");
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 270, 48));
 
-        jButton4.setText("Donaciones");
+        jButton4.setText("Voluntarios");
         jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 270, 48));
 
-        jButton5.setText("Voluntarios");
+        jButton5.setText("Reportes");
         jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 270, 48));
 
-        jButton6.setText("Reportes");
+        jButton6.setText("Mi Perfil");
         jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 48));
 
-        jButton7.setText("Usuarios");
-        jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 270, 48));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 270, 350));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 270, 310));
 
         jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -128,30 +146,93 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel1.setText("BIENVENIDO AL SISTEMA");
         jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 310, 40));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("jTextField1");
-        jTextField1.setPreferredSize(new java.awt.Dimension(80, 25));
-        jDesktopPane1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 410, 50));
+        jLabel2.setText("Total de Medicamentos:");
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("jTextField2");
-        jTextField2.setPreferredSize(new java.awt.Dimension(80, 25));
-        jDesktopPane1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 410, 50));
+        jLabel3.setText(".............");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("jTextField3");
-        jTextField3.setPreferredSize(new java.awt.Dimension(80, 25));
-        jDesktopPane1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 410, 50));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(25, 25, 25))
+        );
+
+        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 430, 70));
+
+        jLabel4.setText("Donaciones de Hoy:");
+
+        jLabel5.setText(".............");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(133, 133, 133)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        jDesktopPane1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 430, 80));
+
+        jLabel6.setText("Voluntarios Activos:");
+
+        jLabel7.setText(".............");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(132, 132, 132)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addContainerGap(136, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(26, 26, 26))
+        );
+
+        jDesktopPane1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 430, 70));
 
         getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 640, 350));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 12)); // NOI18N
-        jLabel8.setText("Tabla de Alertas");
+        jLabel8.setText("Alertas del Sistema");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -329,9 +410,14 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -359,16 +445,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblHo;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblLogoAdavaminsa;
     private javax.swing.JLabel lblRo;
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblUsu;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblfe;
     // End of variables declaration//GEN-END:variables
 }
