@@ -13,7 +13,6 @@ public class LoginController implements ActionListener{
     private UsuarioDao dao;
 
     public LoginController(FrmLogin vista) {
-
         this.vista = vista;
         this.dao = new UsuarioDao();
 
@@ -25,7 +24,6 @@ public class LoginController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         Object origen = e.getSource();
 
         if (origen == vista.btnSalir) {
@@ -42,7 +40,6 @@ public class LoginController implements ActionListener{
     }
 
     private void salir() {
-
         int opcion = JOptionPane.showConfirmDialog(
                 vista,
                 "¿Está seguro que desea salir de ADAVAMINSA?",
@@ -52,51 +49,56 @@ public class LoginController implements ActionListener{
         if (opcion == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-
     }
 
     private void login() {
-
         String usuario = vista.txtUsuario.getText().trim();
         String password = String.valueOf(vista.txtContraseña.getPassword());
 
+        // Validación 1: Campos vacíos
         if (usuario.isEmpty() || password.isEmpty()) {
-
             JOptionPane.showMessageDialog(vista,
-                    "Complete todos los campos.");
-
+                    "Complete todos los campos.",
+                    "Campos Incompletos",
+                    JOptionPane.WARNING_MESSAGE);
+            vista.txtUsuario.requestFocus();
             return;
         }
 
+        // Validación 2: Consultar usuario en BD
         Usuario usuarioLogueado = dao.login(usuario, password);
 
         if (usuarioLogueado == null) {
-
             JOptionPane.showMessageDialog(vista,
-                    "Usuario o contraseña incorrectos.");
-
+                    "Usuario o contraseña incorrectos.",
+                    "Acceso Denegado",
+                    JOptionPane.ERROR_MESSAGE);
             vista.txtContraseña.setText("");
             vista.txtUsuario.requestFocus();
-
             return;
         }
 
+        // Validación 3: Verificar que el rol coincida
         String rolVista = vista.cbxRol.getSelectedItem().toString();
 
         if (!usuarioLogueado.getRol().equalsIgnoreCase(rolVista)) {
-
             JOptionPane.showMessageDialog(vista,
-                    "El rol seleccionado no coincide.");
-
+                    "El rol seleccionado no coincide con el del usuario.\n\n"
+                    + "Rol en el sistema: " + usuarioLogueado.getRol(),
+                    "Validación de Rol",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-//        JOptionPane.showMessageDialog(vista,
-//                "Bienvenido " + usuarioLogueado.getNombre());
-//
-//        FrmPrincipal frm = new FrmPrincipal(usuarioLogueado);
-//        frm.setVisible(true);
-//
-//        vista.dispose();
+        // Login exitoso - Abrir FrmPrincipal
+        JOptionPane.showMessageDialog(vista,
+                "¡Bienvenido " + usuarioLogueado.getNombre() + "!",
+                "Login Exitoso",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        FrmPrincipal frm = new FrmPrincipal(usuarioLogueado);
+        frm.setVisible(true);
+
+        vista.dispose();
     }
 }

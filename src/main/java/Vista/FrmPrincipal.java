@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author jhesp
- */
+import Controlador.LoginController;
+import Modelo.Usuario;
+
 public class FrmPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmPrincipal.class.getName());
@@ -17,6 +12,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
      */
     public FrmPrincipal() {
         initComponents();
+    }
+    
+    private Usuario usuarioActual;
+
+    public FrmPrincipal(Usuario usuario) {
+        this.usuarioActual = usuario;
+        initComponents();
+        configurarDatos();
+    }
+
+    private void configurarDatos() {
+        this.lblUsuario.setText(usuarioActual.getNombre());
+        this.lblRol.setText(usuarioActual.getRol());
+        this.setTitle("ADAVAMINSA - " + usuarioActual.getNombre() + " (" + usuarioActual.getRol() + ")");
     }
 
     /**
@@ -400,7 +409,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmPrincipal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            FrmLogin login = new FrmLogin();
+            login.setVisible(true);
+            new LoginController(login);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
