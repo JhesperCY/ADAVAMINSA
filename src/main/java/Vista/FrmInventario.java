@@ -1,20 +1,51 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author jhesp
- */
+import Controlador.InventarioController;
+
 public class FrmInventario extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FrmInventario
-     */
     public FrmInventario() {
         initComponents();
+        new InventarioController(this);
+    }
+    
+    public javax.swing.JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public javax.swing.JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public javax.swing.JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public javax.swing.JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public javax.swing.JButton getBtnSalir() {
+        return btnSalir;
+    }
+
+// Campo de búsqueda
+    public javax.swing.JTextField getTxtBuscar() {
+        return txtBuscar;
+    }
+
+// Combobox
+    public javax.swing.JComboBox<String> getCbxCategoria() {
+        return cbxCategoria;
+    }
+
+    public javax.swing.JComboBox<String> getCbxEstado() {
+        return cbxEstado;
+    }
+
+// Tabla
+    public javax.swing.JTable getTblInfo() {
+        return tblInfo;
     }
 
     /**

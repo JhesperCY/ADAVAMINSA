@@ -1,31 +1,139 @@
 package Vista;
 
 import Controlador.LoginController;
+import Controlador.PrincipalController;
 import Modelo.Usuario;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 
 public class FrmPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmPrincipal.class.getName());
 
-    /**
-     * Creates new form FrmPrincipal
-     */
-    public FrmPrincipal() {
-        initComponents();
-    }
-    
     private Usuario usuarioActual;
 
     public FrmPrincipal(Usuario usuario) {
         this.usuarioActual = usuario;
         initComponents();
         configurarDatos();
+        iniciarFecha();
+        iniciarHora();
+        new PrincipalController(this, usuarioActual);
     }
 
     private void configurarDatos() {
         this.lblUsuario.setText(usuarioActual.getNombre());
         this.lblRol.setText(usuarioActual.getRol());
+        jLabel1.setText("Bienvenido(a) " + usuarioActual.getNombre());
         this.setTitle("ADAVAMINSA - " + usuarioActual.getNombre() + " (" + usuarioActual.getRol() + ")");
+    }
+    
+    private void iniciarFecha() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        lblFecha.setText(formato.format(new Date()));
+    }
+    
+    private void iniciarHora() {
+        Timer timer = new Timer(1000, e -> {
+            SimpleDateFormat formatoHora
+                    = new SimpleDateFormat("HH:mm:ss");
+            lblHora.setText(formatoHora.format(new Date()));
+        });
+        timer.start();
+    }
+    
+    // Botones del menú lateral
+    public javax.swing.JButton getBtnInicio() {
+        return btnInicio;
+    }
+
+    public javax.swing.JButton getBtnInventario() {
+        return btnInventario;
+    }
+
+    public javax.swing.JButton getBtnDonaciones() {
+        return btnDonaciones;
+    }
+
+    public javax.swing.JButton getBtnVoluntarios() {
+        return btnVoluntarios;
+    }
+
+    public javax.swing.JButton getBtnReportes() {
+        return btnReportes;
+    }
+
+    public javax.swing.JButton getBtnPerfil() {
+        return btnPerfil;
+    }
+    
+    public javax.swing.JMenuItem getItemCerrarSesion() {
+        return itemCerrarSesion;
+    }
+
+    public javax.swing.JMenuItem getItemSalir() {
+        return itemSalir;
+    }
+
+    public javax.swing.JMenuItem getItemRegistrarMedicamento() {
+        return itemRegistrarMedicamento;
+    }
+
+    public javax.swing.JMenuItem getItemRegistrarLote() {
+        return itemRegistrarLote;
+    }
+
+    public javax.swing.JMenuItem getItemBuscarMedicamento() {
+        return itemBuscarMedicamento;
+    }
+
+    public javax.swing.JMenuItem getItemNuevaDonacion() {
+        return itemNuevaDonacion;
+    }
+
+    public javax.swing.JMenuItem getItemHistorial() {
+        return itemHistorial;
+    }
+
+    public javax.swing.JMenuItem getItemRegistrarNuevoVoluntario() {
+        return itemRegistrarNuevoVoluntario;
+    }
+
+    public javax.swing.JMenuItem getItemBuscarVoluntario() {
+        return itemBuscarVoluntario;
+    }
+
+    public javax.swing.JMenuItem getItemAsignarTarea() {
+        return itemAsignarTarea;
+    }
+
+    public javax.swing.JMenuItem getItemStock() {
+        return itemStock;
+    }
+
+    public javax.swing.JMenuItem getItemMedicamentosProximosaVencer() {
+        return itemMedicamentosProximosaVencer;
+    }
+
+    public javax.swing.JMenuItem getItemDonaciones() {
+        return itemDonaciones;
+    }
+
+    public javax.swing.JMenuItem getItemVoluntarios() {
+        return itemVoluntarios;
+    }
+
+    public javax.swing.JMenuItem getItemManual() {
+        return itemManual;
+    }
+
+    public javax.swing.JMenuItem getItemAcercaDe() {
+        return itemAcercaDe;
+    }
+    
+    public javax.swing.JDesktopPane getDesktopPrincipal() {
+        return desktopPrincipal;
     }
 
     /**
@@ -48,51 +156,51 @@ public class FrmPrincipal extends javax.swing.JFrame {
         lblFecha = new javax.swing.JLabel();
         lblfe = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        btnInicio = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
+        btnDonaciones = new javax.swing.JButton();
+        btnVoluntarios = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
+        btnPerfil = new javax.swing.JButton();
+        desktopPrincipal = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTotalMedicamentos = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblDonacionesHoy = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblVoluntariosActivos = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        scrollAlertas = new javax.swing.JScrollPane();
+        tblAlertas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
+        menuIcono = new javax.swing.JMenu();
+        menuArchivo = new javax.swing.JMenu();
+        itemCerrarSesion = new javax.swing.JMenuItem();
+        itemSalir = new javax.swing.JMenuItem();
+        menuInventario = new javax.swing.JMenu();
+        itemRegistrarMedicamento = new javax.swing.JMenuItem();
+        itemRegistrarLote = new javax.swing.JMenuItem();
+        itemBuscarMedicamento = new javax.swing.JMenuItem();
+        menuDonacion = new javax.swing.JMenu();
+        itemNuevaDonacion = new javax.swing.JMenuItem();
+        itemHistorial = new javax.swing.JMenuItem();
+        menuVoluntario = new javax.swing.JMenu();
+        itemRegistrarNuevoVoluntario = new javax.swing.JMenuItem();
+        itemBuscarVoluntario = new javax.swing.JMenuItem();
+        itemAsignarTarea = new javax.swing.JMenuItem();
+        menuReporte = new javax.swing.JMenu();
+        itemStock = new javax.swing.JMenuItem();
+        itemMedicamentosProximosaVencer = new javax.swing.JMenuItem();
+        itemDonaciones = new javax.swing.JMenuItem();
+        itemVoluntarios = new javax.swing.JMenuItem();
+        menuAyuda = new javax.swing.JMenu();
+        itemManual = new javax.swing.JMenuItem();
+        itemAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,35 +237,35 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Inicio");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 48));
+        btnInicio.setText("Inicio");
+        jPanel2.add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 48));
 
-        jButton2.setText("Inventario");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 48));
+        btnInventario.setText("Inventario");
+        jPanel2.add(btnInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 48));
 
-        jButton3.setText("Donaciones");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 270, 48));
+        btnDonaciones.setText("Donaciones");
+        jPanel2.add(btnDonaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 270, 48));
 
-        jButton4.setText("Voluntarios");
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 270, 48));
+        btnVoluntarios.setText("Voluntarios");
+        jPanel2.add(btnVoluntarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 270, 48));
 
-        jButton5.setText("Reportes");
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 270, 48));
+        btnReportes.setText("Reportes");
+        jPanel2.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 270, 48));
 
-        jButton6.setText("Mi Perfil");
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 48));
+        btnPerfil.setText("Mi Perfil");
+        jPanel2.add(btnPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 48));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 270, 310));
 
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desktopPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         jLabel1.setText("BIENVENIDO AL SISTEMA");
-        jDesktopPane1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 310, 40));
+        desktopPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 310, 40));
 
         jLabel2.setText("Total de Medicamentos:");
 
-        jLabel3.setText(".............");
+        lblTotalMedicamentos.setText(".............");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -167,7 +275,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(110, 110, 110)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(lblTotalMedicamentos)
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -176,15 +284,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lblTotalMedicamentos))
                 .addGap(25, 25, 25))
         );
 
-        jDesktopPane1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 430, 70));
+        desktopPrincipal.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 430, 70));
 
         jLabel4.setText("Donaciones de Hoy:");
 
-        jLabel5.setText(".............");
+        lblDonacionesHoy.setText(".............");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -194,7 +302,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(133, 133, 133)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(lblDonacionesHoy)
                 .addContainerGap(134, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -203,15 +311,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(lblDonacionesHoy))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 430, 80));
+        desktopPrincipal.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 430, 80));
 
         jLabel6.setText("Voluntarios Activos:");
 
-        jLabel7.setText(".............");
+        lblVoluntariosActivos.setText(".............");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -221,7 +329,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addGap(132, 132, 132)
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addComponent(lblVoluntariosActivos)
                 .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -230,13 +338,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(lblVoluntariosActivos))
                 .addGap(26, 26, 26))
         );
 
-        jDesktopPane1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 430, 70));
+        desktopPrincipal.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 430, 70));
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 640, 350));
+        getContentPane().add(desktopPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 640, 350));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -244,7 +352,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jLabel8.setText("Alertas del Sistema");
         jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAlertas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -255,138 +363,140 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 "Medicamento", "Lote", "Vence", "Estado"
             }
         ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTable1.setShowGrid(false);
-        jTable1.setShowHorizontalLines(true);
-        jTable1.setShowVerticalLines(true);
-        jScrollPane1.setViewportView(jTable1);
+        tblAlertas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblAlertas.setShowGrid(false);
+        tblAlertas.setShowHorizontalLines(true);
+        tblAlertas.setShowVerticalLines(true);
+        scrollAlertas.setViewportView(tblAlertas);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 940, 150));
+        jPanel4.add(scrollAlertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 940, 150));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 960, 190));
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/icono_pestaña.png"))); // NOI18N
-        jMenu7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Imagenes/icono_pestaña.png"))); // NOI18N
+        menuIcono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(menuIcono);
 
-        jMenu1.setText("Archivo");
-        jMenu1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu1.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuArchivo.setText("Archivo");
+        menuArchivo.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuArchivo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuArchivo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuArchivo.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem2.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem2.setText("Cerrar Sesión");
-        jMenu1.add(jMenuItem2);
+        itemCerrarSesion.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemCerrarSesion.setText("Cerrar Sesión");
+        menuArchivo.add(itemCerrarSesion);
 
-        jMenuItem3.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem3.setText("Salir");
-        jMenu1.add(jMenuItem3);
+        itemSalir.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemSalir.setText("Salir");
+        menuArchivo.add(itemSalir);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuArchivo);
 
-        jMenu2.setText("Inventario");
-        jMenu2.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu2.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuInventario.setText("Inventario");
+        menuInventario.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuInventario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuInventario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuInventario.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem4.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem4.setText("Registro de Medicamento");
-        jMenu2.add(jMenuItem4);
+        itemRegistrarMedicamento.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemRegistrarMedicamento.setText("Registro de Medicamento");
+        menuInventario.add(itemRegistrarMedicamento);
 
-        jMenuItem5.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem5.setText("Registrar Lote");
-        jMenu2.add(jMenuItem5);
+        itemRegistrarLote.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemRegistrarLote.setText("Registrar Lote");
+        menuInventario.add(itemRegistrarLote);
 
-        jMenuItem6.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem6.setText("Buscar Medicamento");
-        jMenu2.add(jMenuItem6);
+        itemBuscarMedicamento.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemBuscarMedicamento.setText("Buscar Medicamento");
+        menuInventario.add(itemBuscarMedicamento);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuInventario);
 
-        jMenu3.setText("Donación");
-        jMenu3.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu3.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuDonacion.setText("Donación");
+        menuDonacion.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuDonacion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuDonacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuDonacion.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem7.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem7.setText("Nueva Donación");
-        jMenu3.add(jMenuItem7);
+        itemNuevaDonacion.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemNuevaDonacion.setText("Nueva Donación");
+        menuDonacion.add(itemNuevaDonacion);
 
-        jMenuItem8.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem8.setText("Historial");
-        jMenu3.add(jMenuItem8);
+        itemHistorial.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemHistorial.setText("Historial");
+        menuDonacion.add(itemHistorial);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuDonacion);
 
-        jMenu4.setText("Voluntarios");
-        jMenu4.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu4.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuVoluntario.setText("Voluntarios");
+        menuVoluntario.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuVoluntario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuVoluntario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuVoluntario.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem9.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem9.setText("Registrar Nuevo Voluntario");
-        jMenu4.add(jMenuItem9);
+        itemRegistrarNuevoVoluntario.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemRegistrarNuevoVoluntario.setText("Registrar Nuevo Voluntario");
+        menuVoluntario.add(itemRegistrarNuevoVoluntario);
 
-        jMenuItem10.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem10.setText("Buscar Voluntario");
-        jMenu4.add(jMenuItem10);
+        itemBuscarVoluntario.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemBuscarVoluntario.setText("Buscar Voluntario");
+        menuVoluntario.add(itemBuscarVoluntario);
 
-        jMenuItem11.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem11.setText("Asignar Tareas");
-        jMenu4.add(jMenuItem11);
+        itemAsignarTarea.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemAsignarTarea.setText("Asignar Tareas");
+        menuVoluntario.add(itemAsignarTarea);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuVoluntario);
 
-        jMenu5.setText("Reportes");
-        jMenu5.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu5.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuReporte.setText("Reportes");
+        menuReporte.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuReporte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuReporte.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuReporte.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem12.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem12.setText("Stock");
-        jMenu5.add(jMenuItem12);
+        itemStock.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemStock.setText("Stock");
+        menuReporte.add(itemStock);
 
-        jMenuItem13.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem13.setText("Medicamentos Proximos a Vencer");
-        jMenu5.add(jMenuItem13);
+        itemMedicamentosProximosaVencer.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemMedicamentosProximosaVencer.setText("Medicamentos Proximos a Vencer");
+        menuReporte.add(itemMedicamentosProximosaVencer);
 
-        jMenuItem14.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem14.setText("Donaciones");
-        jMenu5.add(jMenuItem14);
+        itemDonaciones.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemDonaciones.setText("Donaciones");
+        menuReporte.add(itemDonaciones);
 
-        jMenuItem15.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem15.setText("Voluntarios");
-        jMenu5.add(jMenuItem15);
+        itemVoluntarios.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemVoluntarios.setText("Voluntarios");
+        menuReporte.add(itemVoluntarios);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(menuReporte);
 
-        jMenu6.setText("Ayuda");
-        jMenu6.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jMenu6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu6.setPreferredSize(new java.awt.Dimension(160, 40));
+        menuAyuda.setText("Ayuda");
+        menuAyuda.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
+        menuAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuAyuda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        menuAyuda.setPreferredSize(new java.awt.Dimension(160, 40));
 
-        jMenuItem17.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem17.setText("Manual");
-        jMenu6.add(jMenuItem17);
+        itemManual.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemManual.setText("Manual");
+        menuAyuda.add(itemManual);
 
-        jMenuItem18.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
-        jMenuItem18.setText("Acerca de");
-        jMenu6.add(jMenuItem18);
+        itemAcercaDe.setFont(new java.awt.Font("Constantia", 0, 12)); // NOI18N
+        itemAcercaDe.setText("Acerca de");
+        menuAyuda.add(itemAcercaDe);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(menuAyuda);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -417,61 +527,61 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton btnDonaciones;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnPerfil;
+    private javax.swing.JButton btnReportes;
+    private javax.swing.JButton btnVoluntarios;
+    private javax.swing.JDesktopPane desktopPrincipal;
+    private javax.swing.JMenuItem itemAcercaDe;
+    private javax.swing.JMenuItem itemAsignarTarea;
+    private javax.swing.JMenuItem itemBuscarMedicamento;
+    private javax.swing.JMenuItem itemBuscarVoluntario;
+    private javax.swing.JMenuItem itemCerrarSesion;
+    private javax.swing.JMenuItem itemDonaciones;
+    private javax.swing.JMenuItem itemHistorial;
+    private javax.swing.JMenuItem itemManual;
+    private javax.swing.JMenuItem itemMedicamentosProximosaVencer;
+    private javax.swing.JMenuItem itemNuevaDonacion;
+    private javax.swing.JMenuItem itemRegistrarLote;
+    private javax.swing.JMenuItem itemRegistrarMedicamento;
+    private javax.swing.JMenuItem itemRegistrarNuevoVoluntario;
+    private javax.swing.JMenuItem itemSalir;
+    private javax.swing.JMenuItem itemStock;
+    private javax.swing.JMenuItem itemVoluntarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblDonacionesHoy;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHo;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblLogoAdavaminsa;
     private javax.swing.JLabel lblRo;
     private javax.swing.JLabel lblRol;
+    private javax.swing.JLabel lblTotalMedicamentos;
     private javax.swing.JLabel lblUsu;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblVoluntariosActivos;
     private javax.swing.JLabel lblfe;
+    private javax.swing.JMenu menuArchivo;
+    private javax.swing.JMenu menuAyuda;
+    private javax.swing.JMenu menuDonacion;
+    private javax.swing.JMenu menuIcono;
+    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu menuReporte;
+    private javax.swing.JMenu menuVoluntario;
+    private javax.swing.JScrollPane scrollAlertas;
+    private javax.swing.JTable tblAlertas;
     // End of variables declaration//GEN-END:variables
 }
