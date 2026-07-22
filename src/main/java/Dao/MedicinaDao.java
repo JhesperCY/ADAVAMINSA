@@ -17,7 +17,7 @@ public class MedicinaDao {
     ResultSet rs;
 
     public boolean registrar(Medicina m) {
-        String sql = "INSERT INTO medicina (nombre, lote, fecha_vencimiento, cantidad, categoria) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO medicina (nombre, lote, fecha_vencimiento, cantidad, categoria) VALUES (?,?,?::date,?,?)";
         try {
             con = instanciaConexion.establecerConexion();
             ps = con.prepareStatement(sql);
@@ -53,6 +53,58 @@ public class MedicinaDao {
             return true;
         } catch (SQLException e) {
             System.out.println(e.toString());
+            return false;
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
+    /**
+     * Reemplaza todos los datos de una medicina ya existente (botón Editar).
+     */
+    public boolean actualizar(Medicina m) {
+        String sql = "UPDATE medicina SET nombre=?, lote=?, fecha_vencimiento=?::date, cantidad=?, categoria=? WHERE id_medicina=?";
+        try {
+            con = instanciaConexion.establecerConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, m.getNombre());
+            ps.setString(2, m.getLote());
+            ps.setString(3, m.getFechaVencimiento());
+            ps.setInt(4, m.getCantidad());
+            ps.setString(5, m.getCategoria());
+            ps.setInt(6, m.getIdMedicina());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar medicina: " + e.toString());
+            return false;
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
+    public boolean eliminar(int idMedicina) {
+        String sql = "DELETE FROM medicina WHERE id_medicina = ?";
+        try {
+            con = instanciaConexion.establecerConexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idMedicina);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar medicina: " + e.toString());
             return false;
         } finally {
             try {

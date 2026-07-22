@@ -1,22 +1,20 @@
 package Vista;
 
 import Modelo.Usuario;
+import Controlador.PerfilController;
 
 public class FrmPerfil extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form FrmPerfil
      */
-    public FrmPerfil() {
-        initComponents();
-    }
-    
     private Usuario usuario;
 
     public FrmPerfil(Usuario usuario) {
         this.usuario = usuario;
         initComponents();
         cargarDatos();
+        new PerfilController(this);
     }
 
     private void cargarDatos() {

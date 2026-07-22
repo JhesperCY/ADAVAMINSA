@@ -57,6 +57,10 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
     public JComboBox<String> getCbxMedicina() {
         return cbxMedicina;
     }
+    
+    public javax.swing.JTextField getTxtHospital() {
+        return txtHospital;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

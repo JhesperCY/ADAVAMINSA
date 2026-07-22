@@ -16,7 +16,6 @@ public class VoluntarioDao {
     PreparedStatement ps;
     ResultSet rs;
 
-
     public boolean registrar(Voluntario v) {
         String sql = "INSERT INTO voluntario (dni, nombre, apellido, telefono, especialidad, disponibilidad, estado, horas_servicio) VALUES (?,?,?,?,?,?,?,?)";
         try {
@@ -28,12 +27,65 @@ public class VoluntarioDao {
             ps.setString(4, v.getTelefono());
             ps.setString(5, v.getEspecialidad());
             ps.setString(6, v.getDisponibilidad());
-            ps.setString(7, "Activo"); // Postcondición del CUS-05
-            ps.setInt(8, 0);           // Inicia con cero horas
+            ps.setString(7, "Activo");
+            ps.setInt(8, 0);
             ps.execute();
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al registrar voluntario: " + e.toString());
+            return false;
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
+    /**
+     * Botón Editar: actualiza todos los datos editables de un voluntario.
+     */
+    public boolean actualizar(Voluntario v) {
+        String sql = "UPDATE voluntario SET dni=?, nombre=?, apellido=?, telefono=?, especialidad=?, estado=? WHERE id_voluntario=?";
+        try {
+            con = instanciaConexion.establecerConexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, v.getDni());
+            ps.setString(2, v.getNombre());
+            ps.setString(3, v.getApellido());
+            ps.setString(4, v.getTelefono());
+            ps.setString(5, v.getEspecialidad());
+            ps.setString(6, v.getEstado());
+            ps.setInt(7, v.getIdVoluntario());
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar voluntario: " + e.toString());
+            return false;
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.toString());
+            }
+        }
+    }
+
+    public boolean eliminar(int idVoluntario) {
+        String sql = "DELETE FROM voluntario WHERE id_voluntario = ?";
+        try {
+            con = instanciaConexion.establecerConexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, idVoluntario);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar voluntario: " + e.toString());
             return false;
         } finally {
             try {
@@ -80,7 +132,7 @@ public class VoluntarioDao {
         }
         return lista;
     }
-    
+
     public List<Voluntario> listarTodos() {
         List<Voluntario> lista = new ArrayList<>();
         String sql = "SELECT * FROM voluntario ORDER BY apellido, nombre";

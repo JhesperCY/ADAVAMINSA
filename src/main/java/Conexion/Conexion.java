@@ -7,15 +7,15 @@ import javax.swing.JOptionPane;
 public class Conexion {
     
     Connection conectar = null;
- 
+
     String Usuario = "postgres";
     String Contraseña = "Gasparin";
     String NombreBD = "adavaminsa_db";
     String Ip = "localhost";
     String Puerto = "5432";
- 
+
     String cadena = "jdbc:postgresql://" + Ip + ":" + Puerto + "/" + NombreBD;
- 
+
     public Connection establecerConexion() {
         try {
             Class.forName("org.postgresql.Driver");

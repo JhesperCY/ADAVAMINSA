@@ -17,14 +17,12 @@ public class UsuarioDao {
     public Usuario login(String nombreUsuario, String password) {
         Usuario user = null;
         String sql = "SELECT * FROM usuario WHERE nombre_usuario = ? AND password = ?";
-
         try {
             con = instanciaConexion.establecerConexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, nombreUsuario);
             ps.setString(2, password);
             rs = ps.executeQuery();
-
             if (rs.next()) {
                 user = new Usuario();
                 user.setIdUsuario(rs.getInt("id_usuario"));

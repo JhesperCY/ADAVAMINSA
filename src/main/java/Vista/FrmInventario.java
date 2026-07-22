@@ -1,9 +1,12 @@
 package Vista;
 
+import Controlador.InventarioController;
+
 public class FrmInventario extends javax.swing.JInternalFrame {
     
     public FrmInventario() {
         initComponents();
+        new InventarioController(this);
     }
     
     public javax.swing.JButton getBtnAgregar() {

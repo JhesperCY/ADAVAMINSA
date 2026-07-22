@@ -50,8 +50,6 @@ public class PerfilController implements ActionListener {
         if (dao.actualizarPerfil(usuario)) {
             JOptionPane.showMessageDialog(vista, "Perfil actualizado correctamente.");
         }
-        // Nota: apellido/correo/celular no se guardan todavía porque la
-        // tabla "usuario" no tiene esas columnas (ver UsuarioDao.actualizarPerfil).
     }
 
     private void cambiarPassword() {
