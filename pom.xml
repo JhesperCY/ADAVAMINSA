@@ -25,7 +25,6 @@
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
             <version>3.7</version>
-            <classifier>no-natives</classifier>
         </dependency>
         <dependency>
             <groupId>com.github.librepdf</groupId>
@@ -36,6 +35,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>25</maven.compiler.release>
-        <exec.mainClass>com.mycompany.adavaminsa.ADAVAMINSA</exec.mainClass>
+        <exec.mainClass>Vista.FrmLogin</exec.mainClass>
     </properties>
 </project>
