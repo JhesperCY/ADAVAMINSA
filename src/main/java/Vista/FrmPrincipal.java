@@ -16,6 +16,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public FrmPrincipal(Usuario usuario) {
         this.usuarioActual = usuario;
         initComponents();
+        desktopPrincipal.setLayout(null);
         configurarDatos();
         iniciarFecha();
         iniciarHora();
@@ -135,6 +136,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
     public javax.swing.JDesktopPane getDesktopPrincipal() {
         return desktopPrincipal;
     }
+    
+    public javax.swing.JLabel getJLabelBienvenida() {
+        return jLabel1; // el que dice "BIENVENIDO AL SISTEMA"
+    }
+
+    public javax.swing.JPanel getJPanelTotalMedicamentos() {
+        return jPanel3;
+    }
+
+    public javax.swing.JPanel getJPanelDonacionesHoy() {
+        return jPanel5;
+    }
+
+    public javax.swing.JPanel getJPanelVoluntariosActivos() {
+        return jPanel6;
+    }
+
+    public javax.swing.JLabel getLblTotalMedicamentos() {
+        return lblTotalMedicamentos;
+    }
+
+    public javax.swing.JLabel getLblDonacionesHoy() {
+        return lblDonacionesHoy;
+    }
+
+    public javax.swing.JLabel getLblVoluntariosActivos() {
+        return lblVoluntariosActivos;
+    }
+
+    public javax.swing.JTable getTblAlertas() {
+        return tblAlertas;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

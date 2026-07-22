@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author jhesp
- */
+import Controlador.ReporteController;
+import javax.swing.JButton;
+import javax.swing.JTable;
+
 public class FrmReportes extends javax.swing.JInternalFrame {
 
     /**
@@ -15,6 +11,43 @@ public class FrmReportes extends javax.swing.JInternalFrame {
      */
     public FrmReportes() {
         initComponents();
+        new ReporteController(this);
+    }
+    
+    public JButton getBtnImprimirRI() {
+        return btnImprimirRI;
+    }
+
+    public JButton getBtnImprimirRD() {
+        return btnImprimirRD;
+    }
+
+    public JButton getBtnImprimirRV() {
+        return btnImprimirRV;
+    }
+
+    public JButton getBtnSalirRI() {
+        return btnSalirRI;
+    }
+
+    public JButton getBtnSalirRD() {
+        return btnSalirRD;
+    }
+
+    public JButton getBtnSalirRV() {
+        return btnSalirRV;
+    }
+
+    public JTable getTblInfoRI() {
+        return tblInfoRI;
+    }
+
+    public JTable getTblInfoRD() {
+        return tblInfoRD;
+    }
+
+    public JTable getTblInfoRV() {
+        return tblInfoRV;
     }
 
     /**

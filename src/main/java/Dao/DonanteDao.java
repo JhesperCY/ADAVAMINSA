@@ -1,7 +1,7 @@
 package Dao;
 
 import Conexion.Conexion;
-import Modelo.Donativo;
+import Modelo.Donante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,27 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class DonativoDao {
+public class DonanteDao {
+    
     Conexion instanciaConexion = new Conexion();
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
 
-    public boolean registrarDonativo(Donativo d) {
-
-        String sql = "INSERT INTO donativo (id_donante, id_medicina, fecha, cantidad, observaciones) VALUES (?,?,?::date,?,?)";
+    public boolean registrar(Donante d) {
+        String sql = "INSERT INTO donante (nombre, tipo_donante, ruc_dni, direccion, telefono, correo) VALUES (?,?,?,?,?,?)";
         try {
             con = instanciaConexion.establecerConexion();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, d.getIdDonante());
-            ps.setInt(2, d.getIdMedicina());
-            ps.setString(3, d.getFecha()); // debe venir en formato yyyy-MM-dd
-            ps.setInt(4, d.getCantidad());
-            ps.setString(5, d.getObservaciones());
+            ps.setString(1, d.getNombre());
+            ps.setString(2, d.getTipoDonante());
+            ps.setString(3, d.getRucDni());
+            ps.setString(4, d.getDireccion());
+            ps.setString(5, d.getTelefono());
+            ps.setString(6, d.getCorreo());
             ps.execute();
             return true;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al registrar el historial de donación: " + e.toString());
+            JOptionPane.showMessageDialog(null, "Error al registrar donante: " + e.toString());
             return false;
         } finally {
             try {
@@ -38,26 +39,26 @@ public class DonativoDao {
                     con.close();
                 }
             } catch (SQLException e) {
-                System.out.println(e.toString());
             }
         }
     }
 
-    public List<Donativo> listarHistorial() {
-        List<Donativo> lista = new ArrayList<>();
-        String sql = "SELECT * FROM donativo ORDER BY fecha DESC";
+    public List<Donante> listarTodos() {
+        List<Donante> lista = new ArrayList<>();
+        String sql = "SELECT * FROM donante ORDER BY nombre";
         try {
             con = instanciaConexion.establecerConexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Donativo d = new Donativo();
-                d.setIdDonativo(rs.getInt("id_donativo"));
+                Donante d = new Donante();
                 d.setIdDonante(rs.getInt("id_donante"));
-                d.setIdMedicina(rs.getInt("id_medicina"));
-                d.setFecha(rs.getString("fecha"));
-                d.setCantidad(rs.getInt("cantidad"));
-                d.setObservaciones(rs.getString("observaciones"));
+                d.setNombre(rs.getString("nombre"));
+                d.setTipoDonante(rs.getString("tipo_donante"));
+                d.setRucDni(rs.getString("ruc_dni"));
+                d.setDireccion(rs.getString("direccion"));
+                d.setTelefono(rs.getString("telefono"));
+                d.setCorreo(rs.getString("correo"));
                 lista.add(d);
             }
         } catch (SQLException e) {
@@ -68,9 +69,9 @@ public class DonativoDao {
                     con.close();
                 }
             } catch (SQLException e) {
-                System.out.println(e.toString());
             }
         }
         return lista;
     }
+    
 }

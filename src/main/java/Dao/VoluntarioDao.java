@@ -80,6 +80,39 @@ public class VoluntarioDao {
         }
         return lista;
     }
+    
+    public List<Voluntario> listarTodos() {
+        List<Voluntario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM voluntario ORDER BY apellido, nombre";
+        try {
+            con = instanciaConexion.establecerConexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Voluntario v = new Voluntario();
+                v.setIdVoluntario(rs.getInt("id_voluntario"));
+                v.setDni(rs.getString("dni"));
+                v.setNombre(rs.getString("nombre"));
+                v.setApellido(rs.getString("apellido"));
+                v.setTelefono(rs.getString("telefono"));
+                v.setEspecialidad(rs.getString("especialidad"));
+                v.setDisponibilidad(rs.getString("disponibilidad"));
+                v.setEstado(rs.getString("estado"));
+                v.setHorasServicio(rs.getInt("horas_servicio"));
+                lista.add(v);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+            }
+        }
+        return lista;
+    }
 
     public boolean actualizarEstado(int id, String nuevoEstado) {
         String sql = "UPDATE voluntario SET estado = ? WHERE id_voluntario = ?";

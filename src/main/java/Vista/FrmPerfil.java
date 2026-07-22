@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author jhesp
- */
+import Modelo.Usuario;
+
 public class FrmPerfil extends javax.swing.JInternalFrame {
 
     /**
@@ -15,6 +9,74 @@ public class FrmPerfil extends javax.swing.JInternalFrame {
      */
     public FrmPerfil() {
         initComponents();
+    }
+    
+    private Usuario usuario;
+
+    public FrmPerfil(Usuario usuario) {
+        this.usuario = usuario;
+        initComponents();
+        cargarDatos();
+    }
+
+    private void cargarDatos() {
+        if (usuario != null) {
+            txtUsuario.setText(usuario.getNombreUsuario());
+            txtNombre.setText(usuario.getNombre());
+            // otros campos...
+        }
+    }
+    
+    public javax.swing.JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public javax.swing.JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public javax.swing.JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public javax.swing.JTextField getTxtCorreo() {
+        return txtCorreo;
+    }
+
+    public javax.swing.JTextField getTxtCelular() {
+        return txtCelular;
+    }
+
+    public javax.swing.JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public javax.swing.JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public javax.swing.JPasswordField getPwdContraseña() {
+        return pwdContraseña;
+    }
+
+    public javax.swing.JPasswordField getPwdNuevacontraseña() {
+        return pwdNuevacontraseña;
+    }
+
+    public javax.swing.JPasswordField getPwdConfirmarcontraseña() {
+        return pwdConfirmarcontraseña;
+    }
+
+    public javax.swing.JButton getBtnGuardarE() {
+        return btnGuardarE;
+    }
+
+    public javax.swing.JButton getBtnCancelarE() {
+        return btnCancelarE;
+    }
+
+    public Modelo.Usuario getUsuario() {
+        return usuario;
     }
 
     /**
@@ -203,7 +265,7 @@ public class FrmPerfil extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

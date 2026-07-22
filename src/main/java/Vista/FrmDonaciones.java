@@ -1,20 +1,61 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vista;
 
-/**
- *
- * @author jhesp
- */
+import Controlador.DonacionController;
+import com.toedter.calendar.JDateChooser;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 public class FrmDonaciones extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form FrmDonaciones
-     */
     public FrmDonaciones() {
         initComponents();
+        new DonacionController(this);
+    }
+    
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnEditar() {
+        return btnEditar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnSalir() {
+        return btnSalir;
+    }
+
+    public JTable getTblInfo() {
+        return tblInfo;
+    }
+
+    public JTextField getTxtCantidad() {
+        return txtCantidad;
+    }
+
+    public JTextField getTxtObservaciones() {
+        return txtObservaciones;
+    }
+
+    public JDateChooser getDtcFecha() {
+        return dtcFechadeIngreso;
+    }
+
+    public JComboBox<String> getCbxDonante() {
+        return cbxDonante;
+    }
+
+    public JComboBox<String> getCbxMedicina() {
+        return cbxMedicina;
     }
 
     /**
@@ -32,9 +73,7 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtDonante = new javax.swing.JTextField();
         txtHospital = new javax.swing.JTextField();
-        txtMedicamento = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         dtcFechadeIngreso = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -44,21 +83,35 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        cbxDonante = new javax.swing.JComboBox<>();
+        cbxMedicina = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        txtObservaciones = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(640, 350));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("REGISTRO DE DONACIONES");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 19, -1, -1));
 
         jLabel2.setText("Donante:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 69, -1, -1));
 
         jLabel3.setText("Hospital:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 103, -1, -1));
 
         jLabel4.setText("Medicamento:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 137, -1, -1));
 
         jLabel5.setText("Cantidad:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 171, -1, -1));
 
         jLabel6.setText("Fecha:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 202, -1, -1));
+        getContentPane().add(txtHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 100, 104, -1));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 168, 97, -1));
+        getContentPane().add(dtcFechadeIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 202, 114, -1));
 
         tblInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -73,110 +126,33 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblInfo);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(208, 53, 385, 192));
+
         btnAgregar.setText("Agregar");
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 276, -1, -1));
 
         btnEditar.setText("Editar");
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 277, -1, -1));
 
         btnEliminar.setText("Eliminar");
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 277, -1, -1));
 
         btnActualizar.setText("Actualizar");
+        getContentPane().add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 277, -1, -1));
 
         btnSalir.setText("Salir");
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 277, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtDonante, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(12, 12, 12)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(12, 12, 12)
-                        .addComponent(dtcFechadeIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(btnAgregar)
-                .addGap(32, 32, 32)
-                .addComponent(btnEditar)
-                .addGap(38, 38, 38)
-                .addComponent(btnEliminar)
-                .addGap(37, 37, 37)
-                .addComponent(btnActualizar)
-                .addGap(38, 38, 38)
-                .addComponent(btnSalir))
-            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel2))
-                            .addComponent(txtDonante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel3))
-                            .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel4))
-                            .addComponent(txtMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel5))
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(dtcFechadeIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAgregar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEditar)
-                            .addComponent(btnEliminar)
-                            .addComponent(btnActualizar)
-                            .addComponent(btnSalir)))))
-            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        cbxDonante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbxDonante, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 66, 106, -1));
+
+        cbxMedicina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbxMedicina, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 134, 77, -1));
+
+        jLabel7.setText("Observacion:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 239, -1, -1));
+        getContentPane().add(txtObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 236, 79, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,6 +164,8 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cbxDonante;
+    private javax.swing.JComboBox<String> cbxMedicina;
     private com.toedter.calendar.JDateChooser dtcFechadeIngreso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -196,11 +174,11 @@ public class FrmDonaciones extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblInfo;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtDonante;
     private javax.swing.JTextField txtHospital;
-    private javax.swing.JTextField txtMedicamento;
+    private javax.swing.JTextField txtObservaciones;
     // End of variables declaration//GEN-END:variables
 }
