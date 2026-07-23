@@ -3,6 +3,8 @@ package Vista;
 import Controlador.LoginController;
 import Controlador.PrincipalController;
 import Modelo.Usuario;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Timer;
@@ -21,6 +23,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
         iniciarFecha();
         iniciarHora();
         new PrincipalController(this, usuarioActual);
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Vista/Imagenes/icono_adavaminsa.ico"));
+        System.out.println(getClass().getResource("/Vista/Imagenes/icono_adavaminsa.ico"));
+        return retValue;
     }
 
     private void configurarDatos() {
@@ -237,6 +246,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         itemAcercaDe = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

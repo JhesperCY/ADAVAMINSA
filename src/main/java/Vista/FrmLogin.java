@@ -53,6 +53,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(getIconImage());
         setMinimumSize(new java.awt.Dimension(367, 500));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(367, 500));
